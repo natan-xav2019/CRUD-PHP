@@ -17,9 +17,9 @@
         <h1>CRUD o que e?</h1>
     </header>
 
-    <div>
+    <div class="container">
         <main>
-            <div>
+            <div class="text-center">
                 <h2>CRUD</h2>
             </div>
 
@@ -35,41 +35,58 @@
                 </ul>
             </div>
 
-            <div>
-                <h3>CREATE</h3>
-                <p>Criar um novo registro.</p>
-                <h3>READ</h3>
-                <p>Ler um registro, ou uma lista de registros.</p>
-                <h3>UPDATE</h3>
-                <p>Atualizar um registro.</p>
-                <h3>DELETE</h3>
-                <p>Excluir um registro.</p>
+            <div class="row">
+                <div class="col">
+                    <h3>CREATE</h3>
+                    <p>Criar um novo registro.</p>
+                </div>
+                <div class="col">
+                    <h3>READ</h3>
+                    <p>Ler um registro, ou uma lista de registros.</p>
+                </div>
+                <div class="col">
+                    <h3>UPDATE</h3>
+                    <p>Atualizar um registro.</p>
+                </div>
+                <div class="col">
+                    <h3>DELETE</h3>
+                    <p>Excluir um registro.</p>
+                </div>
             </div>
 
-
-            <form action="" method="post">
-                <label for="nome"> Nome </label>
-                <input for="nome" type="text">
-                <label for="idade"> Idade </label>
-                <input for="idade" type="number">
+            <form class="row" id="from-create" action="" method="post">
+                <div class="form-group text-center">
+                    <h1>Insira os dados para aparecer na tabela</h1>
+                </div>
+                <div class="form-group">
+                    <label class="" for="name">Nome</label>
+                    <input class="form-control" placeholder="digite o nome" id="name" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="age">Idade</label>
+                    <input class="form-control" placeholder="digite a idade" id="age" type="number">
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Enviar">
+                </div>
             </form>
 
-
-            <table>
+            <table class="table">
                 <tr>
                     <th>Nome</th>
                     <th>Idade</th>
-                    <th></th>
+                    <th>Comandos</th>
                 </tr>
                 <tr>
                     <td>Natan</td>
                     <td>23 anos</td>
-                    <td></td>
+                    <td>
+                        <button>Editar</button>
+                        <button>Deletar</button>
+                    </td>
                 </tr>
             </table>
         </main>
-
-
 
         <footer>
             <p>feito por Natan Xavier.</p>
