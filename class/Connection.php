@@ -1,10 +1,10 @@
 <?php 
- class Connection {
+ class Connection implements Crud{
 
-    public String $server = "localhost";
-    public String $user = "root";
-    public String $password = "";
-    private String $dbname= "????";
+    private String $server = "localhost";
+    private String $user = "root";
+    private String $password = "";
+    private String $dbname= "crud";
 
     private $connected;
 
@@ -36,7 +36,7 @@
 
     #função destinada a editar um registro do banco.
     function update(int $id, array $request) {
-        
+
     }
 
 
