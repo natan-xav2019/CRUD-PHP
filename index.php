@@ -53,23 +53,25 @@
                     <p>Excluir um registro.</p>
                 </div>
             </div>
-
-            <form class="row" id="from-create" action="" method="post">
-                <div class="form-group text-center">
-                    <h1>Insira os dados para aparecer na tabela</h1>
-                </div>
-                <div class="form-group">
-                    <label class="" for="name">Nome</label>
-                    <input class="form-control" placeholder="digite o nome" id="name" type="text">
-                </div>
-                <div class="form-group">
-                    <label for="age">Idade</label>
-                    <input class="form-control" placeholder="digite a idade" id="age" type="number">
-                </div>
-                <div class="form-group">
-                    <input class="btn btn-primary" type="submit" value="Enviar">
-                </div>
-            </form>
+            
+            <div>
+                <form class="row" id="from-create" action="" method="post">
+                    <div class="form-group text-center">
+                        <h1>Insira os dados para aparecer na tabela</h1>
+                    </div>
+                    <div class="form-group">
+                        <label class="" for="name">Nome</label>
+                        <input class="form-control" placeholder="digite o nome" id="name" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Idade</label>
+                        <input class="form-control" placeholder="digite a idade" id="age" type="number">
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary" type="submit" value="Enviar">
+                    </div>
+                </form>
+            </div>
 
             <table class="table">
                 <tr>
