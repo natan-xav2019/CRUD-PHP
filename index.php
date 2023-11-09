@@ -1,3 +1,30 @@
+<?php
+include "class/Crud.php";
+include "class/Connection.php";
+include "assets/function/formatAge.php";
+
+$conn = new Connection();
+
+if(isset($_POST["create"],$_POST["name"],$_POST["age"])) {
+    $user = [
+        "name" => $_POST["name"],
+        "age" => $_POST["age"],
+    ];
+
+    $conn->create($user);
+}
+
+if(isset($_POST["delele"])) {
+    $conn->delete($_POST["id"]);
+}
+
+if(isset($_POST["update"])) {
+    $id = $_POST['id'];
+    header("Location: updateUser.php?id=$id");
+}
+
+$users = $conn->read(True);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -13,8 +40,8 @@
 </head>
 
 <body>
-    <header>
-        <h1>CRUD o que e?</h1>
+    <header class="container">
+        <h1 class="text-center">CRUD o que e?</h1>
     </header>
 
     <div class="container">
@@ -22,8 +49,7 @@
             <div class="text-center">
                 <h2>CRUD</h2>
             </div>
-
-            <div>
+            <div class="row">
                 <p>CRUD e uma sigla para falar das 4 operações básicas de um banco de dados, Insert, Select, Update e
                     Delete.</p>
 
@@ -34,7 +60,6 @@
                     <li>D - DELETE</li>
                 </ul>
             </div>
-
             <div class="row">
                 <div class="col">
                     <h3>CREATE</h3>
@@ -55,42 +80,52 @@
             </div>
             
             <div>
-                <form class="row" id="from-create" action="" method="post">
+                <form class="row" id="from-create" action="index.php" method="post">
                     <div class="form-group text-center">
                         <h1>Insira os dados para aparecer na tabela</h1>
                     </div>
                     <div class="form-group">
-                        <label class="" for="name">Nome</label>
-                        <input class="form-control" placeholder="digite o nome" id="name" type="text">
+                        <label for="name">Nome</label>
+                        <input class="form-control" placeholder="digite o nome" id="name" name="name" type="text" required>
                     </div>
                     <div class="form-group">
                         <label for="age">Idade</label>
-                        <input class="form-control" placeholder="digite a idade" id="age" type="number">
+                        <input class="form-control" placeholder="digite a idade" id="age" name="age" type="number" required>
                     </div>
-                    <div class="form-group">
-                        <input class="btn btn-primary" type="submit" value="Enviar">
+                    <div class="form-group mt-2">
+                        <input class="btn btn-primary" type="submit" name="create"  value="Enviar">
                     </div>
                 </form>
             </div>
 
-            <table class="table">
-                <tr>
-                    <th>Nome</th>
-                    <th>Idade</th>
-                    <th>Comandos</th>
-                </tr>
-                <tr>
-                    <td>Natan</td>
-                    <td>23 anos</td>
-                    <td>
-                        <button>Editar</button>
-                        <button>Deletar</button>
-                    </td>
-                </tr>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Idade</th>
+                        <th scope="col">Comandos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($users as $user):?>
+                        <tr>
+                            <td><?=$user["name"]; ?></td>
+                            <td><?= formatAge($user["age"]);?></td>
+                            <td>
+                                
+                                <form action="index.php" id="form-delete" method="post">
+                                    <input type='hidden' name='id' value=<?= $user["id"] ?>>
+                                    <button type="submit" name="update" class="btn btn-outline-primary">Editar</button>
+                                    <button type="submit" name="delele" class="btn btn-danger">Deletar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach?>
+                </tbody>
             </table>
         </main>
 
-        <footer>
+        <footer class="footer">
             <p>feito por Natan Xavier.</p>
         </footer>
     </div>
